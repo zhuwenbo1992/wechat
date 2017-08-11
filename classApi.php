@@ -12,7 +12,8 @@ class wechatCallbackapiTest
 {
 private $appid;
 private $secret;
-    public function__construct($arr=array()){
+    public function__construct($arr=array())
+    {
         isset($arr['appid'])?$arr['appid']:'wx50909fb4a2f19f65';
         isset($arr['secret'])?$arr['secret']:'e09eabf607564c6e41ae79d094c21a12';
 
