@@ -446,16 +446,18 @@ class  WeChat{
     public  function access_token(){
         //2小时过期,为了避免重复调用，把该token值保留在文件中
         $filename='access_token';
-        if(file_exists($filename) && (time()-filemtime($filename))<7200){
+        if(file_exists($filename) && (time()-filemtime($filename))<7200)
+        {
             //从文件中读取凭证
             return  file_get_contents($filename);
         }else{
             $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx50909fb4a2f19f65&secret=e09eabf607564c6e41ae79d094c21a12";
-            $access_token=$this->curl($url,'GET');
-            $access_token=json_decode($access_token,true)['access_token'];
-            file_put_contents($filename,$access_token);
-            return $access_token;
+            $str=curl($url,'GET');
+            $str=json_decode($str,true)['access_token'];
+            file_put_contents($filename, $str);
+
         }
+        return $str;
     }
 
     //处理请求
