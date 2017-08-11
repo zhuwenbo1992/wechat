@@ -82,7 +82,7 @@
       /*
        * curl函数
        */
-      private function curl($url,$method,$data=array(),$setcooke=false,$cookie_file='1.txt'){
+      public  function curl($url,$method,$data=array(),$setcooke=false,$cookie_file='1.txt'){
           $ch = curl_init();	 //1.初始化
           curl_setopt($ch, CURLOPT_URL, $url); //2.请求地址
           curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);//3.请求方式
