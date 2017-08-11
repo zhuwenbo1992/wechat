@@ -51,7 +51,6 @@ class  WeChat{
     public function createMenu(){
 
         $access_token=$this->access_token();
-        var_dump($access_token);die;
 
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token={$access_token}";
         $data='{
@@ -451,7 +450,7 @@ class  WeChat{
             //从文件中读取凭证
             return  file_get_contents($filename);
         }else{
-            $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$this->appid}&secret={$this->secret}";
+            $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxee6f8b2e1deba237&secret=5e83b08b20829116b37b21cafcfcb323";
             $access_token=$this->curl($url,'GET');
             $access_token=json_decode($access_token,true)['access_token'];
             file_put_contents($filename,$access_token);
