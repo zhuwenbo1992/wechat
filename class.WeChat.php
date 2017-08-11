@@ -456,9 +456,9 @@ class  WeChat{
             echo $str;die;
             $str=json_decode($str,true)['access_token'];
             file_put_contents($filename, $str);
-
+            return $str;
         }
-        return $str;
+
     }
 
     //处理请求
