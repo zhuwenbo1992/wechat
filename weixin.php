@@ -1,9 +1,6 @@
 <?php
-
-
 //include("curl_function.php");
 include("classApi.php");
-
 $we = new wechat();
 var_dump($we);die;
 if (!isset($_GET['echostr'])) {
@@ -13,13 +10,5 @@ if (!isset($_GET['echostr'])) {
 }
 
 echo $we->access_token();
-
-
-
-
-
-
-
-
 
  ?>
