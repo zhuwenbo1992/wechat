@@ -18,6 +18,7 @@ $wechat=new WeChat();
 $wechat->createMenu();
 $wechat->tuisong();
 $wechat->responseMsg();
+$wechat->_doText();
 
 class wechatCallbackapiTest
 {

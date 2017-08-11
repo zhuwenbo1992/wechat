@@ -383,7 +383,7 @@ class  WeChat{
     private function _doEvent($postObj){
         // 回复文本消息
         //回复的内容
-        $content="欢迎关注1601php的公众平台";
+        $content="欢迎关注php技术交流的公众平台";
         //获取场景ID值
         $this->msgText($postObj,$content);
     }
