@@ -4,8 +4,18 @@
   */
 
 //define your token
+define("TOKEN", "weixin");
+
+$wechatObj = new wechatCallbackapiTest();
+if (!isset($_GET['echostr'])) {
+    $wechatObj->responseMsg();
+}else{
+    $wechatObj->valid();
+}
 
 include('curl_function.php');
+
+
 class wechatCallbackapiTest
 {
  private $appid;
