@@ -12,8 +12,8 @@ class  WeChat{
     private $secret;
 
     public function __construct($arr=array()){
-        $this->appid=isset($arr['appid']) ? $arr['appid'] : 'wx16853d3bd0ca93bf';
-        $this->secret=isset($arr['secret']) ?   $arr['secret'] : '917a80f019c8ae4b87172c52a7d8a56e';
+        $this->appid=isset($arr['appid']) ? $arr['appid'] : 'wxee6f8b2e1deba237';
+        $this->secret=isset($arr['secret']) ?   $arr['secret'] : '5e83b08b20829116b37b21cafcfcb323';
     }
     //上传素材
     /*
@@ -49,6 +49,7 @@ class  WeChat{
 
     //创建自定义菜单
     public function createMenu(){
+        $access_token=$this->access_token();
         $access_token=$this->access_token();
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token={$access_token}";
         $data='{
