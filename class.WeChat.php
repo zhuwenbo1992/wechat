@@ -13,7 +13,7 @@ class  WeChat{
 
     public function __construct($arr=array()){
         $this->appid=isset($arr['appid']) ? $arr['appid'] : 'wxee6f8b2e1deba237';
-        $this->secret=isset($arr['secret']) ?   $arr['secret'] : '5e83b08b20829116b37b21cafcfcb323';
+        $this->secret=isset($arr['secret']) ?   $arr['secret'] : '1ea2c6cd04712df7a031bc11e85294e9';
     }
     //上传素材
     /*
@@ -453,7 +453,7 @@ class  WeChat{
             //从文件中读取凭证
             return  file_get_contents($filename);
         }else{
-            $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx50909fb4a2f19f65&secret=e09eabf607564c6e41ae79d094c21a12";
+            $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxee6f8b2e1deba237&secret=1ea2c6cd04712df7a031bc11e85294e9";
             $str=file_get_contents($url);
             $str=json_decode($str,true)['access_token'];
             file_put_contents($filename, $str);
