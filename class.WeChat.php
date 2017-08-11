@@ -51,6 +51,7 @@ class  WeChat{
     public function createMenu(){
 
         $access_token=$this->access_token();
+        var_dump($access_token);die;
 
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token={$access_token}";
         $data='{
