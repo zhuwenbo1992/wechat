@@ -10,50 +10,39 @@
 include('curl_function.php');
 class wechatCallbackapiTest
 {
-private $appid;
-private $secret;
-    public function__construct($arr=array())
+ private $appid;
+ private $secret;
+
+    public function __construct($arr=array())
     {
-        isset($arr['appid'])?$arr['appid']:'wx50909fb4a2f19f65';
-        isset($arr['secret'])?$arr['secret']:'e09eabf607564c6e41ae79d094c21a12';
-
-
+        $this->appid=isset($arr['appid']) ? $arr['appid'] : 'wx16853d3bd0ca93bf';
+        $this->secret=isset($arr['secret']) ?   $arr['secret'] : '917a80f019c8ae4b87172c52a7d8a56e';
     }
 
-
-
-    public funciton access_token(){
-
-        //文件2小时过期
-        if(file_exists($filename)&&(time()-filetime($filename))<7200){
-            //读文件
-           $str=file_get_contents($filename);
-
-
-
-        }else{
-
-
-        $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$this->appid}&secret={$this->secret}";
-        $str=curl($url,'GET');
-
-        $str=json_decode($str,true)['access_token'];
-         file_put_contents($filename, $str);
-
-
+    /**
+     * 获取access_token
+     *
+     */
+    private function access_token(){
+        $filename = 'access_token.txt';
+        if (file_exists($filename) && (time()-filemtime($filename))<7200){
+            //从文件中读取
+            return file_get_contents($filename);
+        }
+        else{
+            //调取接口获取并存入文件
+            $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$this->appid}&secret={$this->appsecret}";
+            $str = $this->curl($url,'GET');
+            $access_token = json_decode($str,1)['access_token'];
+            file_put_contents($filename,$access_token);
+            return $access_token;
         }
 
-       
-        return $str;
-
-
-
-
-
     }
 
 
-	public function valid()
+
+    public function valid()
     {
         $echoStr = $_GET["echostr"];
 
