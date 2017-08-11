@@ -62,7 +62,7 @@
        * 获取access_token
        *
        */
-        public function access_token(){
+        public  function access_token(){
             $filename = 'access_token.txt';
             if (file_exists($filename) && (time()-filemtime($filename))<7200){
                 //从文件中读取
@@ -70,7 +70,7 @@
             }
             else{
                 //调取接口获取并存入文件
-                $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$this->appid}&secret={$this->appsecret}";
+                $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx50909fb4a2f19f65&secret=e09eabf607564c6e41ae79d094c21a12";
                 $str = $this->curl($url,'GET');
                 $access_token = json_decode($str,1)['access_token'];
                 file_put_contents($filename,$access_token);
@@ -82,7 +82,7 @@
       /*
        * curl函数
        */
-      public  function curl($url,$method,$data=array(),$setcooke=false,$cookie_file='1.txt'){
+      private function curl($url,$method,$data=array(),$setcooke=false,$cookie_file='1.txt'){
           $ch = curl_init();	 //1.初始化
           curl_setopt($ch, CURLOPT_URL, $url); //2.请求地址
           curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);//3.请求方式
