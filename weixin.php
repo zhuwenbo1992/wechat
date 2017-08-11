@@ -7,16 +7,16 @@ header('Content-type:text');
 include ('class.WeChat.php');
 define("TOKEN", "weixin");
 $wechatObj = new wechatCallbackapiTest();
-//if (isset($_GET['echostr'])) {
-//    $wechatObj->valid();
-//}else
-//    {
-//    $wechatObj->responseMsg();
-//}
+if (isset($_GET['echostr'])) {
+    $wechatObj->valid();
+}else
+    {
+    $wechatObj->responseMsg();
+}
 
 $wechat=new WeChat();
-//$wechat->createMenu();
-$wechat->GetMenu();
+$wechat->createMenu();
+//$wechat->GetMenu();
 //var_dump($wechat->createMenu());
 $wechat->tuisong();
 $wechat->responseMsg();
