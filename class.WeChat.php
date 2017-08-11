@@ -6,7 +6,6 @@
  * Time: 9:48
  */
 define("TOKEN", "weixin");
-include ('curl_function.php');
 //微信公众平台开发类
 class  WeChat{
     private $appid;
@@ -14,7 +13,7 @@ class  WeChat{
 
     public function __construct($arr=array()){
         $this->appid=isset($arr['appid']) ? $arr['appid'] : 'wxee6f8b2e1deba237';
-        $this->secret=isset($arr['secret']) ?   $arr['secret'] :'fbb2a8485f4192912f7b7649e154ae13';
+        $this->secret=isset($arr['secret']) ?   $arr['secret'] : '5e83b08b20829116b37b21cafcfcb323';
     }
     //上传素材
     /*
@@ -48,56 +47,11 @@ class  WeChat{
         $this->curl($url,'GET');
     }
 
-
-   public function  curl($url,$method,$data=array(),$setcooke=false,$cookie_file='1.txt'){
-        $ch = curl_init();	 //1.初始化
-        curl_setopt($ch, CURLOPT_URL, $url); //2.请求地址
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);//3.请求方式
-        //4.参数如下	绕过服务器端SSL的验证
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-        //伪装请求来源，绕过防盗
-        //curl_setopt($ch,CURLOPT_REFERER,"http://wthrcdn.etouch.cn/");
-        //curl_setopt($ch,CURLOPT_REFERER,"http://upload1.techweb.com.cn");
-
-        //配置curl解压缩方式（默认的压缩方式）
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept-Encoding:gzip'));
-        curl_setopt($ch, CURLOPT_ENCODING, "gzip");
-        //配置代理
-        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0'); //指明以哪种方式进行访问
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($ch, CURLOPT_AUTOREFERER, 1);
-        if($method=="POST"){//5.post方式的时候添加数据
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        }
-        //模拟登陆
-        if($setcooke==true){
-            //如果设置要请求的cookie，那么把cookie值保存在指定的文件中
-            curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
-        }else{
-            //就从文件中读取cookie的信息,并验证
-            curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file);
-        }
-        //不直接输出内容
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        //执行
-        $tmpInfo = curl_exec($ch);
-
-        if (curl_errno($ch)) {
-            return curl_error($ch);
-        }
-        //释放资源
-        curl_close($ch);
-        //返回获取的信息
-        return $tmpInfo;
-    }
-
-
     //创建自定义菜单
     public function createMenu(){
 
         $access_token=$this->access_token();
-        var_dump($access_token);die;
+
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token={$access_token}";
         $data='{
                      "button":[
@@ -132,101 +86,8 @@ class  WeChat{
                             }]
                        }]
                  }';
-          $this->curl($url,'POST',$data);
-
+        $this->curl($url,'POST',$data);
     }
-
-
-
-
-
-
-
-    public function GetMenu()
-
-    {
-        $access_token = $this->access_token();
-        $jsonmenu = '{
-      "button":[
-      {
-            "name":"天气预报",
-           "sub_button":[
-            {
-               "type":"click",
-               "name":"北京天气",
-               "key":"天气北京"
-            },
-            {
-               "type":"click",
-               "name":"上海天气",
-               "key":"天气上海"
-            },
-            {
-               "type":"click",
-               "name":"广州天气",
-               "key":"天气广州"
-            },
-            {
-               "type":"click",
-               "name":"深圳天气",
-               "key":"天气深圳"
-            },
-            {
-                "type":"view",
-                "name":"本地天气",
-                "url":"http://m.hao123.com/a/tianqi"
-            }]
-      
-
-       },
-       {
-           "name":"方倍工作室",
-           "sub_button":[
-            {
-               "type":"click",
-               "name":"公司简介",
-               "key":"company"
-            },
-            {
-               "type":"click",
-               "name":"趣味游戏",
-               "key":"游戏"
-            },
-            {
-                "type":"click",
-                "name":"讲个笑话",
-                "key":"笑话"
-            }]
-       
-
-       }]
- }';
-
-
-        $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token;
-        $result = https_request($url, $jsonmenu);
-        var_dump($result);
-    }
-
-        function https_request($url,$data = null)
-        {
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, $url);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-            if (!empty($data)){
-                curl_setopt($curl, CURLOPT_POST, 1);
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-            }
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            $output = curl_exec($curl);
-            curl_close($curl);
-            return $output;
-        }
-
-
-
-
 
 
 

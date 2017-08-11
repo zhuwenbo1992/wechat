@@ -15,7 +15,7 @@ if (isset($_GET['echostr'])) {
 }
 
 $wechat=new WeChat();
-$wechat->createMenu();die;
+$wechat->createMenu();
 $wechat->tuisong();
 $wechat->responseMsg();
 $wechat->_doText();
@@ -30,7 +30,7 @@ class wechatCallbackapiTest
             echo $echoStr;
             exit;
         }
-    }K
+    }
 
     private function checkSignature()
     {
