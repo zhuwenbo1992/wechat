@@ -453,6 +453,7 @@ class  WeChat{
         }else{
             $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx50909fb4a2f19f65&secret=e09eabf607564c6e41ae79d094c21a12";
             $str=curl($url,'GET');
+            echo $str;die;
             $str=json_decode($str,true)['access_token'];
             file_put_contents($filename, $str);
 
