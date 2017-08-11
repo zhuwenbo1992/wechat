@@ -450,7 +450,7 @@ class  WeChat{
             //从文件中读取凭证
             return  file_get_contents($filename);
         }else{
-            $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxee6f8b2e1deba237&secret=5e83b08b20829116b37b21cafcfcb323";
+            $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx50909fb4a2f19f65&secret=e09eabf607564c6e41ae79d094c21a12";
             $access_token=$this->curl($url,'GET');
             $access_token=json_decode($access_token,true)['access_token'];
             file_put_contents($filename,$access_token);
@@ -459,7 +459,7 @@ class  WeChat{
     }
 
     //处理请求
-    private function  curl($url,$method,$data=array(),$setcooke=false,$cookie_file='1.txt'){
+    public  function  curl($url,$method,$data=array(),$setcooke=false,$cookie_file='1.txt'){
         $ch = curl_init();	 //1.初始化
         curl_setopt($ch, CURLOPT_URL, $url); //2.请求地址
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);//3.请求方式
