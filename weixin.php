@@ -7,12 +7,12 @@ header('Content-type:text');
 include ('class.WeChat.php');
 define("TOKEN", "weixin");
 $wechatObj = new wechatCallbackapiTest();
-if (isset($_GET['echostr'])) {
-    $wechatObj->valid();
-}else
-    {
-    $wechatObj->responseMsg();
-}
+//if (isset($_GET['echostr'])) {
+//    $wechatObj->valid();
+//}else
+//    {
+//    $wechatObj->responseMsg();
+//}
 
 $wechat=new WeChat();
 //$wechat->createMenu();
