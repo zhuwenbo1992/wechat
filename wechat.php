@@ -62,7 +62,7 @@
        * 获取access_token
        *
        */
-        private function access_token(){
+        public function access_token(){
             $filename = 'access_token.txt';
             if (file_exists($filename) && (time()-filemtime($filename))<7200){
                 //从文件中读取
