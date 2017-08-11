@@ -87,6 +87,7 @@ class  WeChat{
                             }]
                        }]
                  }';
+        header('Content-Type: text/html; charset=utf-8'); //网页编码
       return   $this->curl($url,'POST',$data);
     }
 
