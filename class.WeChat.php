@@ -13,8 +13,8 @@ class  WeChat{
     private $secret;
 
     public function __construct($arr=array()){
-        $this->appid=isset($arr['appid']) ? $arr['appid'] : 'wx50909fb4a2f19f65';
-        $this->secret=isset($arr['secret']) ?   $arr['secret'] : 'e09eabf607564c6e41ae79d094c21a12';
+        $this->appid=isset($arr['appid']) ? $arr['appid'] : 'wxee6f8b2e1deba237';
+        $this->secret=isset($arr['secret']) ?   $arr['secret'] :'fbb2a8485f4192912f7b7649e154ae13';
     }
     //上传素材
     /*
