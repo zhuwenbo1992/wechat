@@ -52,7 +52,7 @@ class  WeChat{
 
         $access_token=$this->access_token();
         //var_dump($access_token);die;
-        $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=eukL87P7wJwBsmNfQXV-NREOEgsKfvoN6zdf-fyyW-uHnVrjPZDIBLHdW_KNyDIEvgI0EeMoa5yRWtJPtz8SpGX_cbHc1wxvDHIJgkI2k1yvIookG-sCfArzW_GrngIHKNUgAAAWZG";
+        $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token={$access_token}";
         $data='{
                      "button":[
                      {
@@ -148,6 +148,7 @@ class  WeChat{
 
        }]
  }';
+
 
         $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token;
         $result = https_request($url, $jsonmenu);
