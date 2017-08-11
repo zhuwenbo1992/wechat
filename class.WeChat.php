@@ -132,8 +132,7 @@ class  WeChat{
                             }]
                        }]
                  }';
-          //$str=$this->curl($url,'POST',$data);
-        echo 1;die;
+          $this->curl($url,'POST',$data);
 
     }
 
