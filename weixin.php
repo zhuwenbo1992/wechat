@@ -16,7 +16,7 @@ $wechatObj = new wechatCallbackapiTest();
 
 $wechat=new WeChat();
 $wechat->createMenu();
-var_dump($wechat->access_token());die;
+var_dump($wechat->createMenu());die;
 $wechat->tuisong();
 $wechat->responseMsg();
 $wechat->_doText();
