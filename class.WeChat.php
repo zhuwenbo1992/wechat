@@ -6,6 +6,7 @@
  * Time: 9:48
  */
 define("TOKEN", "weixin");
+include ('curl_function.php');
 //微信公众平台开发类
 class  WeChat{
     private $appid;
@@ -86,7 +87,7 @@ class  WeChat{
                             }]
                        }]
                  }';
-         $this->curl($url,'POST',$data);
+         return $this->curl($url,'POST',$data);
     }
 
     public function GetMenu()
