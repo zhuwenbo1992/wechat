@@ -449,11 +449,14 @@ class  WeChat{
         if(file_exists($filename) && (time()-filemtime($filename))<7200)
         {
             //从文件中读取凭证
+            echo 1;
             return  file_get_contents($filename);
         }else{
+            echo 2;
             $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx50909fb4a2f19f65&secret=e09eabf607564c6e41ae79d094c21a12";
             $str=file_get_contents($url);
             $str=json_decode($str,true)['access_token'];
+            echo $str;
             file_put_contents($filename, $str);
             return $str;
         }
