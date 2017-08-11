@@ -133,7 +133,7 @@ class  WeChat{
                        }]
                  }';
           $str=$this->curl($url,'POST',$data);
-          echo $str;
+          var_dump($str);die;
     }
 
 
