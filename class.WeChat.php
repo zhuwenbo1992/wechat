@@ -442,7 +442,7 @@ class  WeChat{
 
 
     //获取access_token
-    private function access_token(){
+    public  function access_token(){
         //2小时过期,为了避免重复调用，把该token值保留在文件中
         $filename='access_token';
         if(file_exists($filename) && (time()-filemtime($filename))<7200){
