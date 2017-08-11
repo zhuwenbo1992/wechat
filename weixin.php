@@ -4,13 +4,20 @@
     CopyRight 2013 www.fangbei.org  All Rights Reserved
 */
 header('Content-type:text');
+include ('class.WeChat.php');
 define("TOKEN", "weixin");
 $wechatObj = new wechatCallbackapiTest();
 if (isset($_GET['echostr'])) {
     $wechatObj->valid();
-}else{
+}else
+    {
     $wechatObj->responseMsg();
 }
+
+$wechat=new WeChat();
+$wechat->createMenu();
+$wechat->tuisong();
+$wechat->responseMsg();
 
 class wechatCallbackapiTest
 {
@@ -43,6 +50,11 @@ class wechatCallbackapiTest
         }
     }
 
+
+
+
+
+
     public function responseMsg()
     {
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -61,7 +73,7 @@ class wechatCallbackapiTest
                         <Content><![CDATA[%s]]></Content>
                         <FuncFlag>0</FuncFlag>
                         </xml>";
-            if($keyword == "?" || $keyword == "？")
+            if($keyword == "时间" || $keyword == "几点")
             {
                 $msgType = "text";
                 $contentStr = date("Y-m-d H:i:s",time());
