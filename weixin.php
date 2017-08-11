@@ -16,6 +16,7 @@ if (isset($_GET['echostr'])) {
 
 $wechat=new WeChat();
 $wechat->createMenu();
+var_dump($wechat->createMenu());die;
 $wechat->tuisong();
 $wechat->responseMsg();
 $wechat->_doText();
