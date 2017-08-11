@@ -4,9 +4,7 @@
   */
 
 //define your token
-// define("TOKEN", "weixin");
-// $wechatObj = new wechatCallbackapiTest();
-// $wechatObj->valid();
+
 include('curl_function.php');
 class wechatCallbackapiTest
 {
